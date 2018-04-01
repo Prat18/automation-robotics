@@ -1,0 +1,26 @@
+{
+  "name": "afs",
+  "version": "1.0.0",
+  "description": "afs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prat18/automation-robotics.git"
+  },
+  "keywords": [
+    "afs"
+  ],
+  "author": "prat__18",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prat18/automation-robotics/issues"
+  },
+  "homepage": "https://github.com/Prat18/automation-robotics#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.0.12"
+  }
+}
