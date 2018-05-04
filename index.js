@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
+const router = require('express').Router();
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const path = require('path');
+const dataproduction = require('./routes/dataproduction')(router);
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.uri,(err) => {
@@ -14,7 +18,14 @@ mongoose.connect(config.uri,(err) => {
     }
 });
 
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/dist/'));
+app.use('/productiondata', dataproduction);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/dist/index.html'));
